@@ -318,7 +318,7 @@ const VideoSurface = forwardRef<VideoHandle, Props>(function VideoSurface(
   const hasTransform = scale !== 1 || panX !== 0 || panY !== 0;
 
   return (
-    <div className={`relative w-full h-full bg-black overflow-hidden ${className}`}>
+    <div className={`relative isolate w-full h-full bg-black overflow-hidden ${className}`}>
       {!ready && poster && (
         <img
           src={poster}
@@ -336,7 +336,7 @@ const VideoSurface = forwardRef<VideoHandle, Props>(function VideoSurface(
         onClick={onClick}
         className={`w-full h-full bg-black ${fit === "cover" ? "object-cover" : "object-contain"}`}
         style={{
-          opacity: ready ? 1 : 0,
+          position: "absolute", inset: 0, zIndex: 0, pointerEvents: platform === "android" ? "none" : "auto", opacity: ready ? 1 : 0,
           transform: hasTransform ? `translate3d(${panX}px, ${panY}px, 0) scale(${scale})` : "none",
           transformOrigin: "center center",
           transition: isGesturing ? "opacity .25s" : "opacity .25s, transform .2s cubic-bezier(.2,0,0,1)",
