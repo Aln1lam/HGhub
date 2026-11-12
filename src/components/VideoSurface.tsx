@@ -337,7 +337,7 @@ const VideoSurface = forwardRef<VideoHandle, Props>(function VideoSurface(
         className={`w-full h-full bg-black ${fit === "cover" ? "object-cover" : "object-contain"}`}
         style={{
           opacity: ready ? 1 : 0,
-          transform: hasTransform ? `translate3d(${panX}px, ${panY}px, 0) scale(${scale})` : "translateZ(0)",
+          transform: hasTransform ? `translate3d(${panX}px, ${panY}px, 0) scale(${scale})` : "none",
           transformOrigin: "center center",
           transition: isGesturing ? "opacity .25s" : "opacity .25s, transform .2s cubic-bezier(.2,0,0,1)",
         }}
